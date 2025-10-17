@@ -25,16 +25,25 @@
     <fragment
         android:id="@+id/nav_inmu"
         android:name="com.inmueble.tpinmueblelab3.ui.inmueble.InmuebleFragment"
-        android:label="fragment_inmueble"
+        android:label="Inmuebles"
         tools:layout="@layout/fragment_inmueble" />
     <fragment
         android:id="@+id/nav_contra"
         android:name="com.inmueble.tpinmueblelab3.ui.alquiler.ContratoFragment"
-        android:label="fragment_contrato"
+        android:label="Contratos"
         tools:layout="@layout/fragment_contrato" />
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.inmueble.tpinmueblelab3.ui.logout.LogoutFragment"
-        android:label="fragment_logout"
+        android:label="Cerrar Sesion"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_cambio"
+        android:name="com.inmueble.tpinmueblelab3.ui.propietario.CambioFragment"
+        android:label="Cambiar Contraseña"
+        tools:layout="@layout/fragment_cambio" >
+        <action
+            android:id="@+id/action_cambioFragment_to_nav_prop"
+            app:destination="@id/nav_prop" />
+    </fragment>
 </navigation>

@@ -28,6 +28,9 @@
             android:theme="@style/Theme.TpInmuebleLab3.NoActionBar">
 
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyByYq7hGTQfb7Ick8SmR8gtuCRWWRp2sbA" />
     </application>
 
 </manifest>

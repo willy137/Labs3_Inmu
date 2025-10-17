@@ -5,14 +5,19 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.inmueble.tpinmueblelab3.ui.modelos.Propietario;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 
 public class ApiClient {
@@ -46,6 +51,12 @@ public class ApiClient {
         @FormUrlEncoded
         @POST("api/propietarios/login")
         Call<String> login(@Field("Usuario") String usuario, @Field("Clave") String password);
-
+        @GET("api/Propietarios")
+        Call<Propietario> obtenerPropietario(@Header("Authorization") String token);
+        @PUT("api/Propietarios/actualizar")
+        Call<Propietario> actualizarPropietario(@Header("Authorization") String token, @Body Propietario propietario);
+        @FormUrlEncoded
+        @PUT("api/Propietarios/changePassword")
+        Call<Void> actualizarContraseña(@Header("Authorization") String token,@Field("currentPassword") String actual,@Field("newPassword") String nueva);
     }
 }
