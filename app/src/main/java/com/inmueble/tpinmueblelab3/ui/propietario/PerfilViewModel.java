@@ -25,6 +25,8 @@ public class PerfilViewModel extends AndroidViewModel {
 
     private MutableLiveData<Propietario> mPropietario=new MutableLiveData<>();
 
+    private MutableLiveData<String> mMensaje= new MutableLiveData<>();
+
     public PerfilViewModel(@NonNull Application application) {
         super(application);
     }
@@ -39,14 +41,12 @@ public class PerfilViewModel extends AndroidViewModel {
                 if(response.isSuccessful()){
                     mPropietario.postValue(response.body());
                 }else {
-                    Toast.makeText(getApplication(), "Error al obtener el propietario", Toast.LENGTH_SHORT).show();
-                    Log.d("Error",response.message());
+                    mMensaje.setValue("Error En el Perfil");
                 }
             }
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
-                Toast.makeText(getApplication(), "Error del Servidor", Toast.LENGTH_SHORT).show();
-                Log.d("Error",t.getMessage());
+                mMensaje.setValue("Error En el Servidor");
             }
         });
     }
@@ -67,19 +67,19 @@ public class PerfilViewModel extends AndroidViewModel {
                     @Override
                     public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                         if (response.isSuccessful()){
-                            Toast.makeText(getApplication(),"Usuario Actualizado",Toast.LENGTH_LONG).show();
+                            mMensaje.setValue("Usuario Actualizado");
                         }else {
-                            Toast.makeText(getApplication(),"Error al Actualizar",Toast.LENGTH_LONG).show();
+                            mMensaje.setValue("Error al Actualizar");
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Propietario> call, Throwable t) {
-                        Toast.makeText(getApplication(),"Error Servidor",Toast.LENGTH_LONG).show();
+                        mMensaje.setValue("Error de Servidor");
                     }
                 });
             }else {
-                Toast.makeText(getApplication(),"Error Campos Vacios",Toast.LENGTH_LONG).show();
+                mMensaje.setValue("Error Campos Vacios");
             }
         }
     }
@@ -92,9 +92,13 @@ public class PerfilViewModel extends AndroidViewModel {
         return valido;
     }
 
+    public void borrarMensaje(){
+        mMensaje.setValue(null);
+    }
     public LiveData<String> getMGuardar() {
         return mGuardar;
     }
     public LiveData<Boolean> getMActivo(){return mActivo;}
     public LiveData<Propietario> getMPropietario(){return mPropietario;}
+    public LiveData<String> getMMensaje(){return mMensaje;}
 }

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondologin"
     tools:context=".ui.LoginActivity">
 
     <TextView
@@ -12,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:text="Inmobiliaria La Punta"
+        android:fontFamily="sans-serif-medium"
         android:textColor="#9E1D81"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -60,7 +62,7 @@
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="12dp"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:text="DEEKQW"
         android:textColor="@color/white"
         android:backgroundTint="#9E1D81"
@@ -76,7 +78,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Ingresar"
-
         android:backgroundTint="#9E1D81"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

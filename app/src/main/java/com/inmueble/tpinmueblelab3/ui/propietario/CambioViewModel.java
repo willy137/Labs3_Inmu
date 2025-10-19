@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CambioViewModel extends AndroidViewModel {
-    public MutableLiveData<String> mMensaje= new MutableLiveData<>();
+    public MutableLiveData<String> mMensaje1= new MutableLiveData<>();
 
     public CambioViewModel(@NonNull Application application) {
         super(application);
@@ -32,23 +32,23 @@ public class CambioViewModel extends AndroidViewModel {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if(response.isSuccessful()){
-                        mMensaje.setValue("Cambio de Contraseña exitoso");
+                        mMensaje1.setValue("Cambio de Contraseña exitoso");
                     }else {
-                        mMensaje.setValue("Error Contraseña Actual Incorrecta");
+                        mMensaje1.setValue("Error Contraseña Actual Incorrecta");
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
-                    mMensaje.setValue("Error Servidor");
+                    mMensaje1.setValue("Error Servidor");
                 }
             });
         }else {
-            mMensaje.setValue("Contraseña Vacia/ No coinciden las contraseñas");
+            mMensaje1.setValue("Contraseña Vacia/ No coinciden las contraseñas");
         }
     }
-    public LiveData<String> getmMensaje() {
-        return mMensaje;
+    public LiveData<String> getmMensaje1() {
+        return mMensaje1;
     }
 
 }

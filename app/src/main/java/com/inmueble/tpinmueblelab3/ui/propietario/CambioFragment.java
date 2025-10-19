@@ -36,13 +36,15 @@ public class CambioFragment extends Fragment {
         mv=new ViewModelProvider(this).get(CambioViewModel.class);
         View root = binding.getRoot();
 
-        mv.getmMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
+        mv.getmMensaje1().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 binding.tvMensaje.setText(s);
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    binding.tvMensaje.setText("");
-                }, 2000);
+                    if (binding != null) {
+                        binding.tvMensaje.setText("");
+                    }
+                }, 1000);
             }
         });
         binding.btCambiar.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +60,10 @@ public class CambioFragment extends Fragment {
 
         return root;
     }
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 
 }

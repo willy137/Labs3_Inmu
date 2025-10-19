@@ -3,10 +3,13 @@ package com.inmueble.tpinmueblelab3.ui.propietario;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -60,6 +63,17 @@ public class PerfilFragment extends Fragment {
                 binding.btEditar.setText(s);
             }
         });
+        mv.getMMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvMensaje.setText(s);
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    if (binding != null) {
+                        binding.tvMensaje.setText("");
+                    }
+                }, 1000);
+            }
+        });
         binding.btEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +92,7 @@ public class PerfilFragment extends Fragment {
                 navController.navigate(R.id.nav_cambio);
             }
         });
+
         return root;
     }
 
@@ -85,5 +100,6 @@ public class PerfilFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        mv.borrarMensaje();
     }
 }

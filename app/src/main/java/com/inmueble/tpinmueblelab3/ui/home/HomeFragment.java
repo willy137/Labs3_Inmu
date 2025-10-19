@@ -48,7 +48,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
-            googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
             googleMap.addMarker(new MarkerOptions().position(inmo).title("Inmbiliaria ULP"));
             CameraPosition cam=new CameraPosition.Builder()
                     .target(inmo)
