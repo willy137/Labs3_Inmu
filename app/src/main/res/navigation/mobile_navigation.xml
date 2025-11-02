@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.inmueble.tpinmueblelab3.ui.home.HomeFragment"
+        android:name="com.inmueble.tpinmueblelab3.ui.ubicacion.UbicacionFragment"
         android:label="Inicio"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_ubicacion" />
 
     <fragment
         android:id="@+id/nav_prop"
@@ -21,17 +21,32 @@
         android:id="@+id/nav_inqui"
         android:name="com.inmueble.tpinmueblelab3.ui.inquilino.InquilinosFragment"
         android:label="Inquilinos"
-        tools:layout="@layout/fragment_inquilino" />
+        tools:layout="@layout/fragment_inquilino" >
+        <action
+            android:id="@+id/action_nav_inqui_to_detalleInquilinoFragment"
+            app:destination="@id/nav_detalleinquilino" />
+    </fragment>
     <fragment
         android:id="@+id/nav_inmu"
         android:name="com.inmueble.tpinmueblelab3.ui.inmueble.InmuebleFragment"
         android:label="Inmuebles"
-        tools:layout="@layout/fragment_inmueble" />
+        tools:layout="@layout/fragment_inmueble" >
+        <action
+            android:id="@+id/action_nav_inmu_to_detalleInmuebleFragment2"
+            app:destination="@id/nav_detinmu" />
+        <action
+            android:id="@+id/action_nav_inmu_to_agregarInmuebleFragment"
+            app:destination="@id/nav_agregarinmu" />
+    </fragment>
     <fragment
         android:id="@+id/nav_contra"
         android:name="com.inmueble.tpinmueblelab3.ui.alquiler.ContratoFragment"
         android:label="Contratos"
-        tools:layout="@layout/fragment_contrato" />
+        tools:layout="@layout/fragment_contrato" >
+        <action
+            android:id="@+id/action_nav_contra_to_detalleContratoFragment"
+            app:destination="@id/nav_detallecontrato" />
+    </fragment>
     <fragment
         android:id="@+id/nav_logout"
         android:name="com.inmueble.tpinmueblelab3.ui.logout.LogoutFragment"
@@ -45,5 +60,52 @@
         <action
             android:id="@+id/action_cambioFragment_to_nav_prop"
             app:destination="@id/nav_prop" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detinmu"
+        android:name="com.inmueble.tpinmueblelab3.ui.inmueble.DetalleInmuebleFragment"
+        android:label="Detalle Inmueble" >
+        <action
+            android:id="@+id/action_detalleInmuebleFragment2_to_nav_inmu"
+            app:destination="@id/nav_inmu" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_agregarinmu"
+        android:name="com.inmueble.tpinmueblelab3.ui.inmueble.AgregarInmuebleFragment"
+        android:label="Agregar Inmueble"
+        tools:layout="@layout/fragment_agregar_inmueble" >
+        <action
+            android:id="@+id/action_agregarInmuebleFragment_to_nav_inmu"
+            app:destination="@id/nav_inmu" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detallecontrato"
+        android:name="com.inmueble.tpinmueblelab3.ui.alquiler.DetalleContratoFragment"
+        android:label="Detalle Del Contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_nav_contra"
+            app:destination="@id/nav_contra" />
+        <action
+            android:id="@+id/action_nav_detallecontrato_to_pagoFragment"
+            app:destination="@id/nav_pago" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_pago"
+        android:name="com.inmueble.tpinmueblelab3.ui.pagos.PagoFragment"
+        android:label="Pagos"
+        tools:layout="@layout/fragment_pago" >
+        <action
+            android:id="@+id/action_pagoFragment_to_nav_detallecontrato"
+            app:destination="@id/nav_detallecontrato" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detalleinquilino"
+        android:name="com.inmueble.tpinmueblelab3.ui.inquilino.DetalleInquilinoFragment"
+        android:label="Inquilino"
+        tools:layout="@layout/fragment_detalle_inquilino" >
+        <action
+            android:id="@+id/action_detalleInquilinoFragment_to_nav_inqui"
+            app:destination="@id/nav_inqui" />
     </fragment>
 </navigation>
