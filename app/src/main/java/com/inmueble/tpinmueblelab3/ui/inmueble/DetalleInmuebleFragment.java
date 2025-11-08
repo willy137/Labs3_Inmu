@@ -35,7 +35,6 @@ public class DetalleInmuebleFragment extends Fragment {
         binding = FragmentDetalleInmuebleBinding.bind(getLayoutInflater().inflate(R.layout.fragment_detalle_inmueble, container, false));
         mViewModel = new ViewModelProvider(this).get(DetalleInmuebleViewModel.class);
         mViewModel.getInmueble().observe(getViewLifecycleOwner(), inmueble -> {
-            binding.tvIdInmueble.setText(inmueble.getIdInmueble() + "");
             binding.tvDireccionI.setText(inmueble.getDireccion());
             binding.tvUsoI.setText(inmueble.getUso());
             binding.tvAmbientesI.setText(inmueble.getAmbientes() + "");

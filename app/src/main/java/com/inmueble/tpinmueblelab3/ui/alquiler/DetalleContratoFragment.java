@@ -42,7 +42,6 @@ public class DetalleContratoFragment extends Fragment {
         mv.getMContrato().observe(getViewLifecycleOwner(), new Observer<Contrato>() {
             @Override
             public void onChanged(Contrato contrato) {
-                binding.tvCodigo.setText(contrato.getIdContrato()+"");
                 binding.tvFechaInicio.setText(contrato.getFechaInicio()+"");
                 binding.tvFechaFin.setText(contrato.getFechaFinalizacion()+"");
                 binding.tvMonto.setText(contrato.getMontoAlquiler()+"");

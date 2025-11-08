@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inmueble.tpinmueblelab3.R;
+import com.inmueble.tpinmueblelab3.databinding.FragmentLogoutBinding;
 
 public class LogoutFragment extends Fragment {
 
     private LogoutViewModel mViewModel;
+    private FragmentLogoutBinding binding;
 
     public static LogoutFragment newInstance() {
         return new LogoutFragment();
@@ -25,7 +27,10 @@ public class LogoutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_logout, container, false);
+        binding=FragmentLogoutBinding.inflate(inflater,container,false);
+        View root=binding.getRoot();
+        AlertaSalida.mostrarDialogoBoton(getContext());
+        return root;
     }
 
     @Override

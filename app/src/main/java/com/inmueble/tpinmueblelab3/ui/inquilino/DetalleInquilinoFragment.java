@@ -38,7 +38,6 @@ public class DetalleInquilinoFragment extends Fragment {
         mv.getMInquilino().observe(getViewLifecycleOwner(), new Observer<Inquilino>() {
             @Override
             public void onChanged(Inquilino inquilino) {
-                binding.tvCodigoInqui.setText(inquilino.getIdInquilino()+"");
                 binding.tvNombreInqui.setText(inquilino.getNombre());
                 binding.tvApellidoInqui.setText(inquilino.getApellido());
                 binding.tvDniInqui.setText(inquilino.getDni()+"");

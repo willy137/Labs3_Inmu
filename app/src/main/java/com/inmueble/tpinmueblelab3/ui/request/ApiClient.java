@@ -51,6 +51,13 @@ public class ApiClient {
         editor.putString("token", token);
         editor.apply();
     }
+    public static boolean cerrarSesion(Context context){
+        SharedPreferences sp=context.getSharedPreferences("token.xml",context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.remove("token");
+        editor.apply();
+        return false;
+    }
 
     public static String leerToken(Context context) {
         SharedPreferences sp = context.getSharedPreferences("token.xml", Context.MODE_PRIVATE);

@@ -71,9 +71,9 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
                     @Override
                     public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
                         if (response.isSuccessful()){
-                            mMensaje.setValue("Funciono");
+                            mMensaje.setValue("Inmueble Agregado");
                         }else {
-                            mMensaje.setValue("No funciono");
+                            mMensaje.setValue("Error al agregar Inmueble");
                         }
                     }
 
@@ -86,7 +86,7 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
                 mMensaje.setValue("No se admiten Campos Vacios");
             }
         }catch (Exception ex){
-            mMensaje.setValue("Debe Ingresar numeros");
+            mMensaje.setValue("Campos Vacios");
             return;
         }
 
