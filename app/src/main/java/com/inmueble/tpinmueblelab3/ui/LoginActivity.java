@@ -12,9 +12,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.inmueble.tpinmueblelab3.databinding.ActivityLoginBinding;
+import com.inmueble.tpinmueblelab3.ui.propietario.CambioViewModel;
+
 import android.hardware.SensorEventListener;
 
 
@@ -34,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements  SensorEventList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mv= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(ActivityLoginViewModel.class);
+        mv=new ViewModelProvider(this).get(ActivityLoginViewModel.class);
         binding=ActivityLoginBinding.inflate(getLayoutInflater());
         solicitarPermisos();
         binding.btLogin.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +48,17 @@ public class LoginActivity extends AppCompatActivity implements  SensorEventList
                 mv.inicio(user,password);
             }
         });
-
+        mv.getMMensaje().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                binding.tvMensajeLogin.setText(s);
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    if (binding != null) {
+                        binding.tvMensajeLogin.setText("");
+                    }
+                }, 1000);
+            }
+        });
         sg = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = sg.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sg.registerListener(this, sensor , SensorManager.SENSOR_DELAY_NORMAL);
