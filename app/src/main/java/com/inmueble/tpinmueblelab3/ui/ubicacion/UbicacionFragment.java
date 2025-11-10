@@ -24,18 +24,17 @@ import com.inmueble.tpinmueblelab3.databinding.FragmentUbicacionBinding;
 public class UbicacionFragment extends Fragment {
 
     private FragmentUbicacionBinding binding;
+    private UbicacionViewModel mv;
 
-    private static final LatLng inmo=new LatLng(-33.150720,-66.306864);
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        UbicacionViewModel homeViewModel =
-                new ViewModelProvider(this).get(UbicacionViewModel.class);
-
+        mv=new ViewModelProvider(this).get(UbicacionViewModel.class);
         binding = FragmentUbicacionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         SupportMapFragment smf=(SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.flMap);
-        smf.getMapAsync(new MapaActual());
+        UbicacionViewModel.MapaActual mapaActual=mv.getMapaActualCallback();
+        smf.getMapAsync(mapaActual);
         return root;
     }
 
@@ -44,22 +43,6 @@ public class UbicacionFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-    private class MapaActual implements OnMapReadyCallback {
 
-        @Override
-        public void onMapReady(@NonNull GoogleMap googleMap) {
-            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            googleMap.addMarker(new MarkerOptions().position(inmo).title("Inmbiliaria ULP"));
-            CameraPosition cam=new CameraPosition.Builder()
-                    .target(inmo)
-                    .zoom(15)
-                    .bearing(0)
-                    .tilt(0)
-                    .build();
-            CameraUpdate update= CameraUpdateFactory.newCameraPosition(cam);
-            googleMap.animateCamera(update);
-
-        }
-    }
 
 }
